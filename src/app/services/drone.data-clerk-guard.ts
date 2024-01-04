@@ -11,7 +11,7 @@ export class ClerkGuard implements CanActivate {
     async canActivate(route: ActivatedRouteSnapshot){
         if( route.url[1].path == 'update'  && await this.auth.isDataClerk() ){
             alert('Missing roles. Only Managers and Admins allowed.')
-            this.router.navigate(['/login'])
+            this.router.navigate(['/drones'])
             return false;
         }
         return true;

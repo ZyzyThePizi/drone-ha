@@ -16,10 +16,15 @@ export class LoginComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private http: HttpClient, private router: Router){}
 
  async ngOnInit() {
-   this.loginForm = this.formBuilder.group({
-    email: ['', Validators.required],
-    password: ['', Validators.required],
-   })
+    if(localStorage.getItem('token'))
+      this.router.navigate(['/drones']).then(()=>{
+        alert('Already logged in. To change account, first sign out.')
+      })
+    
+    this.loginForm = this.formBuilder.group({
+      email: ['', Validators.required],
+      password: ['', Validators.required],
+    })
   }
 
    onSubmit(){

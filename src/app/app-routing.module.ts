@@ -14,9 +14,10 @@ const routes: Routes = [
   {path: 'drones/:id', component: DroneDetailComponent, canActivate: [AuthGuard ,DroneDetailGuard]},
   {path: 'drones/update/:id', component: UpdateDroneComponent, canActivate: [AuthGuard , ClerkGuard,DroneDetailGuard]},
   {path: 'login', component: LoginComponent},
-  {path: '', redirectTo: '/login', pathMatch: 'full'},
   {path: 'drones', component: DronesComponent, canActivate: [ AuthGuard ]},
-  {path: 'drone_reg', component: AddDroneComponent, canActivate: [ AuthGuard ]}
+  {path: 'drone_reg', component: AddDroneComponent, canActivate: [ AuthGuard ]},
+  {path: '', redirectTo: '/login', pathMatch: 'full'},
+  {path: '**', redirectTo: '/login'}
 ];
 
 @NgModule({

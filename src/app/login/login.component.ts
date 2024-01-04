@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
    onSubmit(){
-    this.http.post('http://localhost:8080/api/auth', this.loginForm.getRawValue(), {withCredentials: true})
+    this.http.post('https://cssna.teknologija.com/api/auth', this.loginForm.getRawValue(), {withCredentials: true})
     .subscribe( (res: any)=> {
       localStorage.setItem('token', res.accessToken)
       alert('Login succesfull.')

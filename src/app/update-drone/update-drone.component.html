@@ -1,0 +1,76 @@
+<div class="container mx-auto mt-5 pb-3 bg-light shadow-lg rounded centered border">
+    <form novalidate [formGroup]="droneForm" (ngSubmit)="submitForm()">
+        <div class="form-group mb-3 mt-1">
+            <p class="h3 text-dark">Update Drone Registration</p>
+        </div>
+        <div class="form-group m-1">
+          <label for="serialNumber">Serial Number</label>
+          <input type="text" formControlName="serialNumber" class="form-control" id="serialNumber" [value]="drone?.serialNumber">
+
+          <span class="help-block text-danger" *ngIf="(droneForm.get('serialNumber')?.touched || droneForm.get('serialNumber')?.dirty) && droneForm.get('serialNumber')?.errors">
+            <span *ngIf="droneForm.get('serialNumber')?.errors?.['required']"> Field is required! </span>
+          </span>
+
+        </div>
+        <div class="form-group m-1">
+            <label for="modelId">Model Id</label>
+            <input type="number" [max]="modelM" [min]="1" formControlName="modelId" class="form-control" id="modelId" [value]="drone?.modelId">
+            
+          <span class="help-block text-danger" *ngIf="(droneForm.get('modelId')?.touched || droneForm.get('modelId')?.dirty) && droneForm.get('modelId')?.errors">
+            <span *ngIf="droneForm.get('modelId')?.errors?.['required']"> Field is required! </span>
+          </span>
+          
+        </div>
+        <div class="form-group m-1">
+            <label for="ownerIdCardNumber">Owner ID</label>
+            <input type="text" formControlName="ownerIdCardNumber"  class="form-control" id="ownerIdCardNumber" [value]="drone?.ownerIdCardNumber">
+                       
+          <span class="help-block text-danger" *ngIf="(droneForm.get('ownerIdCardNumber')?.touched || droneForm.get('ownerIdCardNumber')?.dirty) && droneForm.get('ownerIdCardNumber')?.errors">
+            <span *ngIf="droneForm.get('ownerIdCardNumber')?.errors?.['required']"> Field is required! </span>
+            <span *ngIf="droneForm.get('ownerIdCardNumber')?.errors?.['droneIdCardValidator'] && droneForm.get('ownerIdCardNumber')?.value != '' "> An ID card number shall consist of a numeric string with an alphabetical character at the end. </span>
+          </span>
+          
+        </div>
+        <div class="form-group m-1">
+            <label for="ownerFirstName">Owner First Name</label>
+            <input type="text" formControlName="ownerFirstName"  class="form-control" id="ownerFirstName" [value]="drone?.ownerFirstName">
+                    
+            <span class="help-block text-danger" *ngIf="(droneForm.get('ownerFirstName')?.touched || droneForm.get('ownerFirstName')?.dirty) && droneForm.get('ownerFirstName')?.errors">
+                <span *ngIf="droneForm.get('ownerFirstName')?.errors?.['required']"> Field is required! </span>
+              </span>
+              
+        </div>
+        <div class="form-group m-1">
+            <label for="ownerLastName">Owner Last Name</label>
+            <input type="text" formControlName="ownerLastName"  class="form-control" id="ownerLastName" [value]="drone?.ownerLastName">
+                                
+          <span class="help-block text-danger" *ngIf="(droneForm.get('ownerLastName')?.touched || droneForm.get('ownerLastName')?.dirty) && droneForm.get('ownerLastName')?.errors">
+            <span *ngIf="droneForm.get('ownerLastName')?.errors?.['required']"> Field is required! </span>
+          </span>
+          
+        </div>
+        <div class="form-group m-1">
+            <label for="ownerContactNumber">Owner Contact Number</label>
+            <input type="text" formControlName="ownerContactNumber"  class="form-control" id="ownerContactNumber" [value]="drone?.ownerContactNumber">
+                                
+          <span class="help-block text-danger" *ngIf="(droneForm.get('ownerContactNumber')?.touched || droneForm.get('ownerContactNumber')?.dirty) && droneForm.get('ownerContactNumber')?.errors">
+            <div *ngIf="droneForm.get('ownerContactNumber')?.errors?.['required']"> Field is required! </div>
+            <div *ngIf="droneForm.get('ownerContactNumber')?.errors?.['pattern']"> Field must be numeric! </div>
+            <div *ngIf="droneForm.get('ownerContactNumber')?.errors?.['min']"> Field must be greater than 0! </div>
+            <div *ngIf="droneForm.get('ownerContactNumber')?.errors?.['minlength']"> Field must be at least 8 characters long! </div>
+          </span>
+          
+        </div>
+        <div class="form-group m-1">
+            <label for="ownerEmailAddress">Owner Email Address</label>
+            <input type="email" formControlName="ownerEmailAddress"  class="form-control" id="ownerEmailAddress" [value]="drone?.ownerEmailAddress">
+                                
+          <span class="help-block text-danger" *ngIf="(droneForm.get('ownerEmailAddress')?.touched || droneForm.get('ownerEmailAddress')?.dirty) && droneForm.get('ownerEmailAddress')?.errors">
+            <span *ngIf="droneForm.get('ownerEmailAddress')?.errors?.['required']"> Field is required! </span>
+            <span *ngIf="droneForm.get('ownerEmailAddress')?.errors?.['email']"> Field must be an email (format xxxxx@xxxxx.xxx)! </span>
+          </span>
+          
+        </div>
+        <button class="btn btn-secondary mt-3" type="submit" [disabled]="!droneForm.valid"> Update Drone</button>
+      </form>
+</div>

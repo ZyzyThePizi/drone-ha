@@ -1,0 +1,36 @@
+<div class="table-responsive m-4 mt-2 bg-light p-5 rounded shadow">
+    <div class="container-fluid"> 
+        <div class="row mb-3">
+            <div class="col-6 text-start"> <button (click)="onExcel()" class="btn btn-secondary p-2">Convert to Excel</button> </div>
+            <div class="col-6 text-end"> <button (click)="onPdf()" class="btn btn-dark">Convert to PDF</button> </div>
+        </div>
+    </div>
+    <table class="table border" id="table">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Card Number</th>
+                <th>Last Name</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>View</th>
+                <th>Update</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of registrations">
+                <td class="col-1 bg-light">{{item.id}}</td>
+                <td class="col-2 bg-light">{{item.ownerIdCardNumber}}</td>
+                <td class="col-2 bg-light">{{item.ownerLastName}}</td>
+                <td class="col-2 bg-light">{{item.brandName}}</td>
+                <td class="col-2 bg-light">{{item.model}}</td>
+                <td class="col-1 bg-light"><button class="btn btn-dark shadow" (click)="onView(item.id)">View</button></td>
+                <td *ngIf="manager || admin" class="col-1 bg-light"><button class="btn btn-secondary shadow" (click)="onUpdate(item.id)">Update</button></td>
+                <td *ngIf="!(manager || admin)" class="col-1 bg-light"><button [disabled]="true" class="btn btn-secondary shadow" (click)="onUpdate(item.id)">Update</button></td>
+                <td *ngIf="admin" class="col-1 bg-light"><button class="btn btn-light shadow" (click)="onDelete(item.id)">Delete</button></td>
+                <td *ngIf="!admin" class="col-1 bg-light"><button class="btn btn-light shadow" [disabled]="true" (click)="onDelete(item.id)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

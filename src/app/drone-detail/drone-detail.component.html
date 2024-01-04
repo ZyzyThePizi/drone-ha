@@ -1,0 +1,48 @@
+<div class="card" *ngIf="drone != null">
+    <div class="card-header">
+        Drone ID: {{drone.id}}
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-2">Brand ({{drone.brandId}}):</div>
+            <div class="col-md-10">{{drone.brandName}}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">Model ({{drone.modelId}}):</div>
+            <div class="col-md-10">{{drone.model}}</div>
+        </div>        
+
+        <div class="row">
+            <div class="col-md-2">Owner Contact Number:</div>
+            <div class="col-md-10">{{drone.ownerContactNumber}}</div>
+        </div>   
+
+        <div class="row">
+            <div class="col-md-2">Owner Email Address:</div>
+            <div class="col-md-10">{{drone.ownerEmailAddress}}</div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2">Owner Full Name:</div>
+            <div class="col-md-10">{{drone.ownerFirstName}} {{drone.ownerLastName}}</div>
+        </div>   
+        
+        <div class="row">
+            <div class="col-md-2">Owner ID number:</div>
+            <div class="col-md-10">{{drone.ownerIdCardNumber}}</div>
+        </div>        
+
+        <div class="row">
+            <div class="col-md-2">Serial Number:</div>
+            <div class="col-md-10">{{drone.serialNumber}}</div>
+        </div>        
+    </div>
+</div>
+
+<div class="mt-2">
+    <button type="button" class="btn btn-primary" (click)="onBack()">
+        Back to the list
+    </button>
+</div>
